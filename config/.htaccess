@@ -1,0 +1,12 @@
+# Habilitar el módulo de reescritura
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Permitir el acceso a los archivos PHP directamente
+    RewriteCond %{REQUEST_URI} !^/guardar_publicacion.php$ [NC]
+
+    # Evitar conflictos con reglas de reescritura
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . index.html [L]
+</IfModule>

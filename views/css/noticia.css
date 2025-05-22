@@ -1,0 +1,617 @@
+/* ————————————————————————————————————————— */
+/* General Reset y configuración base */
+/* ————————————————————————————————————————— */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --teal: #008080;
+  --aquamarine: #7FFFD4;
+  --bright-teal: #01F9C6;
+  --cadet-blue: #5F9EA0;
+  --caribbean-green: #00CC99;
+  --common-teal: #009193;
+  
+  /* Variables para glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --glass-blur: blur(12px);
+}
+
+/* animación de fondo RGB mejorada */
+@keyframes bgRGB {
+  0%   { background-color: var(--teal); }
+  20%  { background-color: var(--aquamarine); }
+  40%  { background-color: var(--bright-teal); }
+  60%  { background-color: var(--cadet-blue); }
+  80%  { background-color: var(--caribbean-green); }
+  100% { background-color: var(--common-teal); }
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  animation: bgRGB 15s ease-in-out infinite alternate;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+main.noticia-page {
+  flex: 1;
+  opacity: 0;
+  animation: fadeIn 1.2s ease-in-out forwards;
+  position: relative;
+}
+
+/* Efecto de profundidad con partículas semitransparentes flotantes */
+main.noticia-page::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 8%),
+    radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 6%),
+    radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 12%),
+    radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.03) 0%, transparent 9%);
+  z-index: -1;
+}
+
+/* Animación fade-in mejorada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  } 
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ————————————————————————————————————————— */
+/* Encabezado principal con glassmorphism */
+/* ————————————————————————————————————————— */
+.encabezado {
+  max-width: 800px;
+  margin: 60px auto 30px;
+  text-align: center;
+  position: relative;
+  padding: 35px 30px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: 24px;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.encabezado::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.encabezado:hover {
+  transform: translateY(-7px) scale(1.01);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.encabezado:hover::before {
+  opacity: 1;
+}
+
+.encabezado h1 {
+  font-size: 2.8rem;
+
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  position: relative;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.encabezado h1::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  margin: 25px auto 0;
+  border-radius: 50px;
+  box-shadow: 0 2px 10px rgba(0, 215, 196, 0.3);
+}
+
+/* ————————————————————————————————————————— */
+/* Descripción con glassmorphism avanzado */
+/* ————————————————————————————————————————— */
+.descripcion-centrada {
+  max-width: 700px;
+  margin: 30px auto;
+  position: relative;
+  padding: 28px 35px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  text-align: center;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.descripcion-centrada::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 50%;
+  height: 10px;
+  transform: translateX(-50%);
+  border-radius: 0 0 50% 50%;
+  opacity: 0.7;
+}
+
+.descripcion-centrada::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.descripcion-centrada:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.descripcion-centrada:hover::after {
+  opacity: 1;
+}
+
+.descripcion-centrada p {
+  font-style: italic;
+  font-size: 1.25rem;
+  color: #fff;
+  line-height: 1.7;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ————————————————————————————————————————— */
+/* Imagen principal mejorada */
+/* ————————————————————————————————————————— */
+.noticia-figure {
+  margin: 40px auto;
+  text-align: center;
+  max-width: 1000px;
+  overflow: hidden;
+  border-radius: 24px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  padding: 12px;
+  position: relative;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.noticia-figure::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.noticia-figure:hover {
+  transform: scale(1.02) translateY(-10px);
+}
+
+.noticia-figure:hover::before {
+  opacity: 1;
+}
+
+.noticia-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  transition: transform 0.5s ease;
+  display: block;
+  position: relative;
+  z-index: 0;
+}
+
+/* ————————————————————————————————————————— */
+/* Contenido principal con glassmorphism */
+/* ————————————————————————————————————————— */
+.contenido {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 40px 45px;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #fff;
+  letter-spacing: 0.3px;
+  border-radius: 24px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.contenido::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  opacity: 0.8;
+}
+
+.contenido::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.contenido:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.contenido:hover::after {
+  opacity: 1;
+}
+
+.contenido p {
+  margin-bottom: 1.5em;
+  position: relative;
+  z-index: 1;
+}
+
+.contenido a {
+  color: #4fc3f7;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(79, 195, 247, 0.3);
+  transition: all 0.3s ease;
+  padding: 0 5px;
+  border-radius: 4px;
+}
+
+.contenido a:hover {
+  color: #81d4fa;
+  background: rgba(79, 195, 247, 0.1);
+  border-color: rgba(129, 212, 250, 0.5);
+}
+
+/* ————————————————————————————————————————— */
+/* Fecha con diseño glassmorphism minimalista */
+/* ————————————————————————————————————————— */
+.fecha-centrada {
+  max-width: 300px;
+  margin: 30px auto 50px;
+  padding: 12px 25px;
+  text-align: center;
+  color: #fff;
+  font-size: 1rem;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: 50px;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.fecha-centrada::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.fecha-centrada:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.fecha-centrada:hover::before {
+  opacity: 1;
+}
+
+.fecha-centrada p {
+  position: relative;
+  z-index: 1;
+}
+
+/* ————————————————————————————————————————— */
+/* Sección de referencia con glassmorphism */
+/* ————————————————————————————————————————— */
+.referencia {
+  max-width: 700px;
+  margin: 50px auto 70px;
+  text-align: center;
+  padding: 30px 35px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: 24px;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.referencia::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  opacity: 0.8;
+}
+
+.referencia::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.referencia:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.referencia:hover::after {
+  opacity: 1;
+}
+
+.referencia h3 {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.referencia h3::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  margin: 12px auto 0;
+  border-radius: 50px;
+}
+
+.referencia a {
+  font-size: 1.05rem;
+  color: #4fc3f7;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background: rgba(79, 195, 247, 0.1);
+  padding: 8px 15px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-top: 10px;
+  word-break: break-all;
+  border: 1px solid rgba(79, 195, 247, 0.2);
+}
+
+.referencia a:hover {
+  color: #81d4fa;
+  background: rgba(79, 195, 247, 0.2);
+  box-shadow: 0 5px 15px rgba(79, 195, 247, 0.15);
+  transform: translateY(-3px);
+}
+
+/* ————————————————————————————————————————— */
+/* Galería con glassmorphism */
+/* ————————————————————————————————————————— */
+.imagenes {
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 35px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: 24px;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.imagenes::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  opacity: 0.8;
+}
+
+.imagenes::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.07), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.imagenes:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.imagenes:hover::after {
+  opacity: 1;
+}
+
+.imagenes h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: #fff;
+  position: relative;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.imagenes h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  margin: 15px auto 0;
+  border-radius: 50px;
+}
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 35px;
+}
+
+.galeria img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.galeria img:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .encabezado {
+    margin: 40px 15px;
+    padding: 25px 20px;
+  }
+  
+  .encabezado h1 {
+    font-size: 2.2rem;
+  }
+  
+  .descripcion-centrada {
+    margin: 20px 15px;
+    padding: 20px;
+    font-size: 1.15rem;
+  }
+  
+  .noticia-figure {
+    margin: 30px 15px;
+  }
+  
+  .contenido {
+    margin: 30px 15px;
+    padding: 25px 20px;
+    font-size: 1.05rem;
+  }
+  
+  .fecha-centrada {
+    margin: 20px auto;
+  }
+  
+  .referencia {
+    margin: 30px 15px;
+    padding: 20px;
+  }
+
+      .imagenes {
+        margin: 40px 15px;
+        padding: 20px 15px;
+      }
+      
+      .galeria {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+    }
+
+    @media (max-width: 480px) {
+      .encabezado h1 {
+        font-size: 1.8rem;
+      }
+      
+      .galeria {
+        grid-template-columns: 1fr;
+      }
+      
+      .noticia-figure {
+        margin: 20px 10px;
+      }
+    }
