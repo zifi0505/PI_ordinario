@@ -1,0 +1,157 @@
+/* views/css/registro.css */
+:root {
+  --teal: #008080;
+  --aquamarine: #7FFFD4;
+  --bright-teal: #01F9C6;
+  --cadet-blue: #5F9EA0;
+  --caribbean-green: #00CC99;
+  --common-teal: #009193;
+}
+
+/* animación de fondo RGB */
+@keyframes bgRGB {
+  0%   { background-color: var(--teal); }
+  20%  { background-color: var(--aquamarine); }
+  40%  { background-color: var(--bright-teal); }
+  60%  { background-color: var(--cadet-blue); }
+  80%  { background-color: var(--caribbean-green); }
+  100% { background-color: var(--common-teal); }
+}
+
+/* centrar todo y animar fondo */
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0; padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  animation: bgRGB 15s ease-in-out infinite alternate;
+  font-family: Arial, sans-serif;
+}
+
+/* recuadro blanco con sombra negra */
+.auth-container {
+  display: flex;
+  width: 85vw;
+  height: 85vh;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 8px 30px rgba(0,0,0,0.3),
+    0 0 60px rgba(0,0,0,0.2);
+}
+
+.pane {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* formulario a la izquierda (35%) */
+.form-pane {
+  flex: 1;
+  padding: 2rem 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.15);
+}
+
+/* carrusel a la derecha (65%) */
+.carousel-pane {
+  flex: 0 0 65%;
+}
+
+.form-pane h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+}
+.form-pane form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.form-pane input {
+  width: 100%;
+  max-width: 320px;
+  padding: .8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+/* Checkbox alineado a la izquierda con texto pegado */
+.form-pane .tos {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  align-items: center;
+  gap: 0; /* Elimina el espacio entre el checkbox y el texto */
+  margin: 0;
+  padding: 0; /* Elimina cualquier padding adicional */
+  justify-content: flex-start; /* Alinea el contenido a la izquierda */
+  margin-left: -160px;
+}
+
+.form-pane .tos input[type="checkbox"] {
+  margin: 0; /* Elimina cualquier margen del checkbox */
+  padding: 0; /* Elimina cualquier padding del checkbox */
+}
+
+.form-pane .tos label {
+  margin: 0; /* Elimina cualquier margen del texto */
+  padding: 0; /* Elimina cualquier padding del texto */
+  line-height: 1; /* Asegura que el texto esté alineado verticalmente con el checkbox */
+}
+
+.form-pane .btn-signup {
+  width: 100%;
+  max-width: 320px;
+  padding: .8rem;
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.form-pane .links {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+}
+.form-pane .links .switch {
+  color: #007bff;
+  text-decoration: underline;
+}
+.form-pane .links .back {
+  padding: .5rem 1rem;
+  border: 1px solid #555;
+  border-radius: 6px;
+  color: #555;
+  text-decoration: none;
+}
+
+/* carrusel intacto */
+.carousel-pane .slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .8s ease;
+}
+.carousel-pane .slide.is-active {
+  opacity: 1;
+}
+.carousel-pane .slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

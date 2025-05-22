@@ -1,0 +1,199 @@
+/* ===== Header ===== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* fondo gris oscuro semitransparente */
+  background-color: rgba(10, 31, 56, 0.5);
+  /* desenfoque del contenido detrás */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+body {
+  /* Empuja el contenido para que no quede detrás del header */
+  padding-top: 60px; /* ajusta según la altura total de tu header */
+}
+
+.site-header__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.logo-img {
+  height: 40px;
+  margin-right: 8px;
+}
+
+/* Nav botones genéricos */
+.main-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
+}
+
+.main-nav a,
+.main-nav .lang-switch,
+.main-nav .login-link,
+.main-nav .logout-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 15px;
+  padding: 6px 10px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 45px;
+  font-size: 0.9rem;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+.main-nav a:hover,
+.main-nav .lang-switch:hover,
+.main-nav .login-link:hover,
+.main-nav .logout-link:hover {
+  opacity: 0.8;
+}
+.lang-switch:focus,
+.login-link:focus,
+.logout-link:focus {
+  outline: none;
+}
+
+/* ===== User Menu ===== */
+.user-menu-wrapper {
+  position: relative;
+  margin-left: 15px;
+}
+
+/* User info container (avatar + username) */
+.user-info {
+  display: flex;
+  align-items: center;
+  background: #000;
+  border-radius: 45px;
+  padding: 6px 10px 6px 6px;
+  color: #fff;
+  gap: 8px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.user-info:hover {
+  opacity: 0.8;
+}
+
+.username {
+  font-size: 0.9rem;
+  white-space: nowrap;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Botón redondo de usuario */
+.btn-user {
+  background: #000;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Pop-up de usuario (Cerrar sesión) */
+.user-popup {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: #000;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  display: none;
+  min-width: 140px;
+  text-align: center;
+  z-index: 1001;
+  overflow: hidden;
+}
+.user-popup.show {
+  display: block;
+}
+
+/* Explicit logout button */
+.logout-link {
+  background: #d32f2f;
+  font-weight: 500;
+}
+
+.logout-link:hover {
+  background: #b71c1c;
+  opacity: 1;
+}
+
+/* Estilos para el botón Admin y elementos relacionados */
+.admin-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  background-color: #1a7ae0;
+  color: white !important; /* Asegura que el color del texto sea blanco */
+  text-decoration: none;
+  border-radius: 45px;
+  font-weight: 500;
+  margin-left: 15px;
+  font-size: 0.9rem;
+  transition: opacity 0.3s ease;
+  /* Asegúrate de que es visible */
+  opacity: 1;
+  visibility: visible;
+}
+
+.admin-link:hover {
+  opacity: 0.8;
+}
+
+/* Estilos específicos para el botón de actualizar publicaciones */
+.admin-link[href*="actualizar_publicaciones"] {
+  background-color: #ff6b01;
+}
+
+/* Arreglar orden y posición en móviles */
+@media (max-width: 768px) {
+  .site-header__inner {
+    flex-direction: column;
+    padding: 0 10px;
+  }
+  
+  .main-nav {
+    margin-top: 10px;
+    justify-content: center;
+  }
+  
+  .admin-link, .login-link, .logout-link {
+    margin-top: 5px;
+  }
+  
+  body {
+    padding-top: 120px; /* Ajusta para el header más alto en móvil */
+  }
+}
