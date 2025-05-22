@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carros</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+  <!-- Encabezado -->
+  <header class="bg-black text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">🚗 Carros</h1>
+      <nav>
+        <ul class="flex space-x-4">
+          <li><a href="#inicio" class="hover:text-yellow-400">Inicio</a></li>
+          <li><a href="#modelos" class="hover:text-yellow-400">Modelos</a></li>
+          <li><a href="#contacto" class="hover:text-yellow-400">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Sección Principal -->
+  <section id="inicio" class="py-10 text-center bg-white">
+    <h2 class="text-3xl font-semibold mb-4">Carros</h2>
+    <p class="text-lg">Explora los autos más innovadores</p>
+  </section>
+
+  <!-- Sección de Modelos -->
+  <section id="modelos" class="py-10 bg-gray-200">
+    <div class="container mx-auto">
+      <h2 class="text-2xl font-bold mb-6 text-center">Modelos Destacados</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Tarjeta 1 -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+          <img src="https://via.placeholder.com/400x200" alt="Modelo A" class="w-full">
+          <div class="p-4">
+            <h3 class="font-bold text-xl">Autos Deportivos</h3>
+            <p>Autonomía de 600 km, conducción autónoma, interior de lujo.</p>
+          </div>
+        </div>
+        <!-- Tarjeta 2 -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+          <img src="https://via.placeholder.com/400x200" alt="Modelo B" class="w-full">
+          <div class="p-4">
+            <h3 class="font-bold text-xl">PICK UPS</h3>
+            <p>Pickup eléctrica con potencia, diseño moderno y tracción 4x4.</p>
+          </div>
+        </div>
+        <!-- Tarjeta 3 -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+          <img src="https://via.placeholder.com/400x200" alt="Modelo C" class="w-full">
+          <div class="p-4">
+            <h3 class="font-bold text-xl">Autos Reliquias</h3>
+            <p>Sedán de lujo con autonomía superior y diseño aerodinámico.</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+          <img src="https://via.placeholder.com/400x200" alt="Modelo C" class="w-full">
+          <div class="p-4">
+            <h3 class="font-bold text-xl">Autos clasicos</h3>
+            <p>Sedán de lujo con autonomía superior y diseño aerodinámico.</p>
+      </div>
+    </div>
+
+    
+  </section>
+
+  <!-- Sección de Contacto -->
+  <section id="contacto" class="py-10 bg-white">
+    <div class="container mx-auto text-center">
+      <h2 class="text-2xl font-bold mb-4">Contáctanos</h2>
+      <form class="max-w-lg mx-auto space-y-4">
+        <input type="text" placeholder="Nombre" class="w-full p-2 border rounded" required />
+        <input type="email" placeholder="Correo electrónico" class="w-full p-2 border rounded" required />
+        <textarea placeholder="Tu mensaje" class="w-full p-2 border rounded" rows="4" required></textarea>
+        <button type="submit" class="bg-black text-white px-6 py-2 rounded hover:bg-yellow-500">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Pie de Página -->
+  <footer class="bg-black text-white p-4 text-center">
+    © 2025 Carros del Futuro. Todos los derechos reservados.
+  </footer>
+</body>
+</html>
